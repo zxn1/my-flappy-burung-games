@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Welcome back student!
+</title>
+</head>
+<style>
+.ctrl {
+	position : absolute;
+}
+.land {
+	position : absolute;
+	height : 250px;
+	width : 100%;
+	background-color : #03fca5;
+	left : 0px;
+	top : 515px;
+	z-index : -3;
+}
+
+body {
+	background-image : url(https://media1.giphy.com/media/4N1FZFE5AGO3qrUGkw/giphy.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.tiangseri {
+	background-image : url(https://freepikpsd.com/wp-content/uploads/2019/10/flappy-bird-pipe-png-1-Transparent-Images.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position : absolute;
+	height : 30%;
+	width : 100px;
+}
+
+</style>
+<!-- letak ni dalam file lain
+<style>
+.losing {
+	position : absolute;
+	top : 0px;
+	left : 0px;
+	height : 100%;
+	width : 100%;
+	background-color : black;
+	background-image : url(https://media4.giphy.com/media/eJ4j2VnYOZU8qJU3Py/giphy.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+</style> -->
+<body>
+
+<form id="form" name="mantap">
+<img src="https://lh3.googleusercontent.com/proxy/kgbjcLxmLEqxEpfDhQi0KCa8ElBb3aw_z2BH0sKT4vmYbPPl_z3vH6buJ7sj8KSufMyfazcEzwT_Zj2YgyA3dCvetb-HZKaWpxp98vzJklypSkBi" width="100px" height="70px" name="character" style="position : absolute; top: 230px; right : 1186px;" class="char"/>
+
+<!--
+cabaran is here till
+-->
+<div id="tiang1">
+<div class="tiangseri" id="tiangatas1" style="top : 0px; right : 100px;">
+<img src="https://freepikpsd.com/wp-content/uploads/2019/10/flappy-bird-pipe-png-1-Transparent-Images.png" height="100%" width="100%" style="position : absolute; top : -220px;"/>
+<div style="position : absolute; background-color : black; bottom : 0px; height : 50px; width : 100%;"></div>
+</div>
+<div class="tiangseri" id="tiangbawah1" style="top : 350px; right : 100px;">
+<img src="https://freepikpsd.com/wp-content/uploads/2019/10/flappy-bird-pipe-png-1-Transparent-Images.png" height="150%" width="100%" style="position : absolute; top : 200px;"/>
+<div style="position : absolute; background-color : black; top : 0px; height : 50px; width : 100%;"></div>
+</div>
+</div>
+
+<div id="tiang2">
+<div class="tiangseri" id="tiangatas2" style="top : 0px; right : -300px;">
+<img src="https://freepikpsd.com/wp-content/uploads/2019/10/flappy-bird-pipe-png-1-Transparent-Images.png" height="100%" width="100%" style="position : absolute; top : -220px;"/>
+<div style="position : absolute; background-color : black; bottom : 0px; height : 50px; width : 100%;"></div>
+</div>
+<div class="tiangseri" id="tiangbawah2" style="top : 350px; right : -300px;">
+<img src="https://freepikpsd.com/wp-content/uploads/2019/10/flappy-bird-pipe-png-1-Transparent-Images.png" height="150%" width="100%" style="position : absolute; top : 200px;"/>
+<div style="position : absolute; background-color : black; top : 0px; height : 50px; width : 100%;"></div>
+</div>
+</div>
+
+
+<div id="tiang3">
+<div class="tiangseri" id="tiangatas3" style="top : 0px; right : -700px;">
+<img src="https://freepikpsd.com/wp-content/uploads/2019/10/flappy-bird-pipe-png-1-Transparent-Images.png" height="100%" width="100%" style="position : absolute; top : -220px;"/>
+<div style="position : absolute; background-color : black; bottom : 0px; height : 50px; width : 100%;"></div>
+</div>
+<div class="tiangseri" id="tiangbawah3" style="top : 350px; right : -700px;">
+<img src="https://freepikpsd.com/wp-content/uploads/2019/10/flappy-bird-pipe-png-1-Transparent-Images.png" height="150%" width="100%" style="position : absolute; top : 200px;"/>
+<div style="position : absolute; background-color : black; top : 0px; height : 50px; width : 100%;"></div>
+</div>
+</div>
+
+
+<div id="tiang4">
+<div class="tiangseri" id="tiangatas4" style="top : 0px; right : -1100px;">
+<img src="https://freepikpsd.com/wp-content/uploads/2019/10/flappy-bird-pipe-png-1-Transparent-Images.png" height="100%" width="100%" style="position : absolute; top : -220px;"/>
+<div style="position : absolute; background-color : black; bottom : 0px; height : 50px; width : 100%;"></div>
+</div>
+<div class="tiangseri" id="tiangbawah4" style="top : 350px; right : -1100px;">
+<img src="https://freepikpsd.com/wp-content/uploads/2019/10/flappy-bird-pipe-png-1-Transparent-Images.png" height="150%" width="100%" style="position : absolute; top : 200px;"/>
+<div style="position : absolute; background-color : black; top : 0px; height : 50px; width : 100%;"></div>
+</div>
+</div>
+
+<!--
+here
+-->
+
+<div class="land"> 
+<div style="background-color : black; width : 100%; position : absolute; top : 0px; height : 10px;">
+</div>
+</div>
+
+<div class="ctrl">
+<table>
+<tr>
+<td>
+Controller : 
+</td>
+<td>
+<input type="text" name="input" onkeyup="movement()"/>
+</td>
+</tr>
+<td>
+Input : 
+</td>
+<td>
+<input type="text" name="res" readonly="readonly"/>
+</td>
+</tr>
+</table>
+</div>
+
+</form>
+</br>
+<script>
+var temp = document.mantap.character.style.top;
+var screen = screen.height;
+//var brickmax = screen.width;
+var brickmax = 1536; //position left : 0px
+//alert(brickmax);
+
+var pos_tiang1 = document.getElementById("tiangatas1").style.right;
+var pos_tiang2 = document.getElementById("tiangatas2").style.right;
+var pos_tiang3 = document.getElementById("tiangatas3").style.right;
+var pos_tiang4 = document.getElementById("tiangatas4").style.right;
+//alert(pos_tiang1);
+
+//alert(screen);
+
+//start up function
+falldown(); //gravity sebenarnya
+lose();
+movethebrick();
+//mampus();
+
+//all tiang yang ada di atas - collider
+detectCollisions1();
+detectCollisions2();
+detectCollisions3();
+detectCollisions4();
+
+//all tiang yang ada di bawah - collider
+detectCollisionsA();
+detectCollisionsB();
+detectCollisionsC();
+detectCollisionsD();
+
+
+function mampus() {
+	document.mantap.input.readOnly = true;
+	document.mantap.character.src = "https://1.bp.blogspot.com/-XLj4Q2wUJfo/YGFSiwrmFTI/AAAAAAAABo8/xWk2PgXp8OIBFWwKbA5-jWRGt3XrF86VgCLcBGAsYHQ/s512/flappy%2B-death.png";
+	speedupfalldown();
+}
+
+function removepx(str)
+{
+	var temp = "";
+	for(i = 0; i < str.length-2; i++)
+	{
+		temp = temp + str.charAt(i);
+	}
+	return temp;
+}
+	  
+function detectCollisions1(){
+	// brick pipe flappy bird tu - property
+	pw = parseFloat(removepx(document.getElementById("tiangatas1").style.right))-10; //right
+	ph = 200; //height
+	px = pw+80; //left
+	py = parseFloat(removepx(document.getElementById("tiangatas1").style.top))+ph; //top
+	
+	//alert("right : " + pw + " - height : " + ph + " - left : " + px + " - py : " + py);
+	
+	//avatar character burung terbang - property
+	tw = parseFloat(removepx(document.mantap.character.style.right)); //right
+	ty = parseFloat(removepx(document.mantap.character.style.top)); //top
+	th = ty+70 //height
+	tx = tw+100; //left
+
+	//alert("tw : " + tw + " - th : " + th + " - tx : " + tx + " - ty : " + ty);
+	
+	// Check to see if player has intersected with thing1 in any direction
+	if((tw <= px) && (py >= ty) && (tx >= pw)) {
+		//alert("mati");
+		mampus(); 
+		//detectLocation(); //checking purpose
+		//panggil function bird mati nanti..
+	} else {
+		//alert("hidup");
+	}
+	setTimeout(() => { detectCollisions1(); /*alert(para);*/ }, 0.1);
+}
+
+function detectCollisions2(){
+	// brick pipe flappy bird tu - property
+	pw = parseFloat(removepx(document.getElementById("tiangatas2").style.right))-10; //right
+	ph = 200; //height
+	px = pw+80; //left
+	py = parseFloat(removepx(document.getElementById("tiangatas2").style.top))+ph; //top
+	
+	//alert("right : " + pw + " - height : " + ph + " - left : " + px + " - py : " + py);
+	
+	//avatar character burung terbang - property
+	tw = parseFloat(removepx(document.mantap.character.style.right)); //right
+	ty = parseFloat(removepx(document.mantap.character.style.top)); //top
+	th = ty+70 //height
+	tx = tw+100; //left
+
+	//alert("tw : " + tw + " - th : " + th + " - tx : " + tx + " - ty : " + ty);
+	
+	// Check to see if player has intersected with thing1 in any direction
+	if((tw <= px) && (py >= ty) && (tx >= pw)) {
+		//alert("mati");
+		mampus();
+		//panggil function bird mati nanti..
+	} else {
+		//alert("hidup");
+	}
+	setTimeout(() => { detectCollisions2(); /*alert(para);*/ }, 0.1);
+}
+
+function detectCollisions3(){
+	// brick pipe flappy bird tu - property
+	pw = parseFloat(removepx(document.getElementById("tiangatas3").style.right))-10; //right
+	ph = 200; //height
+	px = pw+80; //left
+	py = parseFloat(removepx(document.getElementById("tiangatas3").style.top))+ph; //top
+	
+	//alert("right : " + pw + " - height : " + ph + " - left : " + px + " - py : " + py);
+	
+	//avatar character burung terbang - property
+	tw = parseFloat(removepx(document.mantap.character.style.right)); //right
+	ty = parseFloat(removepx(document.mantap.character.style.top)); //top
+	th = ty+70 //height
+	tx = tw+100; //left
+
+	//alert("tw : " + tw + " - th : " + th + " - tx : " + tx + " - ty : " + ty);
+	
+	// Check to see if player has intersected with thing1 in any direction
+	if((tw <= px) && (py >= ty) && (tx >= pw)) {
+		//alert("mati");
+		mampus();
+		//panggil function bird mati nanti..
+	} else {
+		//alert("hidup");
+	}
+	setTimeout(() => { detectCollisions3(); /*alert(para);*/ }, 0.1);
+}
+
+function detectCollisions4(){
+	// brick pipe flappy bird tu - property
+	pw = parseFloat(removepx(document.getElementById("tiangatas4").style.right))-10; //right
+	ph = 200; //height
+	px = pw+80; //left
+	py = parseFloat(removepx(document.getElementById("tiangatas4").style.top))+ph; //top
+	
+	//alert("right : " + pw + " - height : " + ph + " - left : " + px + " - py : " + py);
+	
+	//avatar character burung terbang - property
+	tw = parseFloat(removepx(document.mantap.character.style.right)); //right
+	ty = parseFloat(removepx(document.mantap.character.style.top)); //top
+	th = ty+70 //height
+	tx = tw+100; //left
+
+	//alert("tw : " + tw + " - th : " + th + " - tx : " + tx + " - ty : " + ty);
+	
+	// Check to see if player has intersected with thing1 in any direction
+	if((tw <= px) && (py >= ty) && (tx >= pw)) {
+		//alert("mati");
+		mampus();
+		//panggil function bird mati nanti..
+	} else {
+		//alert("hidup");
+	}
+	setTimeout(() => { detectCollisions4(); /*alert(para);*/ }, 0.1);
+}
+
+function detectCollisionsA(){
+	// brick pipe flappy bird tu - property
+	pw = parseFloat(removepx(document.getElementById("tiangatas1").style.right))+20; //right
+	//ph = 200; //height
+	px = pw+80; //left
+	py = parseFloat(removepx(document.getElementById("tiangbawah1").style.top))-54; //top
+	
+	//alert("right : " + pw + " - height : " + ph + " - left : " + px + " - py : " + py);
+	
+	//avatar character burung terbang - property
+	tw = parseFloat(removepx(document.mantap.character.style.right)); //right
+	ty = parseFloat(removepx(document.mantap.character.style.top)); //top
+	th = ty+70 //height
+	tx = tw+100; //left
+
+	//alert("tw : " + tw + " - th : " + th + " - tx : " + tx + " - ty : " + ty);
+	
+	// Check to see if player has intersected with thing1 in any direction
+	if((tw <= px) && (py <= ty) && (tx >= pw)) {
+		//alert("mati");
+		mampus();
+		//panggil function bird mati nanti..
+	} else {
+		//alert("hidup");
+	}
+	setTimeout(() => { detectCollisionsA(); /*alert(para);*/ }, 0.1);
+}
+
+function detectCollisionsB(){
+	// brick pipe flappy bird tu - property
+	pw = parseFloat(removepx(document.getElementById("tiangatas2").style.right))+20; //right
+	//ph = 200; //height
+	px = pw+80; //left
+	py = parseFloat(removepx(document.getElementById("tiangbawah2").style.top))-54; //top
+	
+	//alert("right : " + pw + " - height : " + ph + " - left : " + px + " - py : " + py);
+	
+	//avatar character burung terbang - property
+	tw = parseFloat(removepx(document.mantap.character.style.right)); //right
+	ty = parseFloat(removepx(document.mantap.character.style.top)); //top
+	th = ty+70 //height
+	tx = tw+100; //left
+
+	//alert("tw : " + tw + " - th : " + th + " - tx : " + tx + " - ty : " + ty);
+	
+	// Check to see if player has intersected with thing1 in any direction
+	if((tw <= px) && (py <= ty) && (tx >= pw)) {
+		//alert("mati");
+		mampus();
+		//panggil function bird mati nanti..
+	} else {
+		//alert("hidup");
+	}
+	setTimeout(() => { detectCollisionsB(); /*alert(para);*/ }, 0.1);
+}
+
+function detectCollisionsC(){
+	// brick pipe flappy bird tu - property
+	pw = parseFloat(removepx(document.getElementById("tiangatas3").style.right))+20; //right
+	//ph = 200; //height
+	px = pw+80; //left
+	py = parseFloat(removepx(document.getElementById("tiangbawah3").style.top))-54; //top
+	
+	//alert("right : " + pw + " - height : " + ph + " - left : " + px + " - py : " + py);
+	
+	//avatar character burung terbang - property
+	tw = parseFloat(removepx(document.mantap.character.style.right)); //right
+	ty = parseFloat(removepx(document.mantap.character.style.top)); //top
+	th = ty+70 //height
+	tx = tw+100; //left
+
+	//alert("tw : " + tw + " - th : " + th + " - tx : " + tx + " - ty : " + ty);
+	
+	// Check to see if player has intersected with thing1 in any direction
+	if((tw <= px) && (py <= ty) && (tx >= pw)) {
+		//alert("mati");
+		mampus();
+		//panggil function bird mati nanti..
+	} else {
+		//alert("hidup");
+	}
+	setTimeout(() => { detectCollisionsC(); /*alert(para);*/ }, 0.1);
+}
+
+function detectCollisionsD(){
+	// brick pipe flappy bird tu - property
+	pw = parseFloat(removepx(document.getElementById("tiangatas4").style.right))+20; //right
+	//ph = 200; //height
+	px = pw+80; //left
+	py = parseFloat(removepx(document.getElementById("tiangbawah4").style.top))-54; //top
+	
+	//alert("right : " + pw + " - height : " + ph + " - left : " + px + " - py : " + py);
+	
+	//avatar character burung terbang - property
+	tw = parseFloat(removepx(document.mantap.character.style.right)); //right
+	ty = parseFloat(removepx(document.mantap.character.style.top)); //top
+	th = ty+70 //height
+	tx = tw+100; //left
+
+	//alert("tw : " + tw + " - th : " + th + " - tx : " + tx + " - ty : " + ty);
+	
+	// Check to see if player has intersected with thing1 in any direction
+	if((tw <= px) && (py <= ty) && (tx >= pw)) {
+		//alert("mati");
+		mampus();
+		//panggil function bird mati nanti..
+	} else {
+		//alert("hidup");
+	}
+	setTimeout(() => { detectCollisionsD(); /*alert(para);*/ }, 0.1);
+}
+
+function detectLocation(){
+	// brick pipe flappy bird tu - property
+	pw = parseFloat(removepx(document.getElementById("tiangatas1").style.right)); //right
+	ph = 259.2; //height
+	px = pw+100; //left
+	py = parseFloat(removepx(document.getElementById("tiangatas1").style.top))+ph; //top
+	
+	//alert("right : " + pw + " - height : " + ph + " - left : " + px + " - py : " + py);
+	
+	//avatar character burung terbang - property
+	tw = parseFloat(removepx(document.mantap.character.style.right)); //right
+	ty = parseFloat(removepx(document.mantap.character.style.top)); //top
+	th = ty+70 //height
+	tx = tw+100; //left
+
+	alert("tw : " + tw + " - th : " + th + " - tx : " + tx + " - ty : " + ty + " - pw : " + pw + " - ph : " + ph + " - px : " + px + " - py : " + py);
+}
+	
+function movethebrick()
+{
+	var temp_pos = "";
+	var temp_pos2 = "";
+	var temp_pos3 = "";
+	var temp_pos4 = "";
+	
+	for(i = 0; i < pos_tiang1.length-2; i++)
+		{
+			temp_pos = temp_pos + pos_tiang1.charAt(i);
+		}
+	for(i = 0; i < pos_tiang2.length-2; i++)
+		{
+			temp_pos2 = temp_pos2 + pos_tiang2.charAt(i);
+		}
+	for(i = 0; i < pos_tiang3.length-2; i++)
+		{
+			temp_pos3 = temp_pos3 + pos_tiang3.charAt(i);
+		}
+	for(i = 0; i < pos_tiang4.length-2; i++)
+		{
+			temp_pos4 = temp_pos4 + pos_tiang4.charAt(i);
+		}
+		
+		
+	if(temp_pos >= brickmax) {
+		//alert("work!");
+		reposition_up_down('A');
+		pos_tiang1 = "0px";
+		//alert("tiang 1 punya temp " + temp_pos);
+	} else {
+		temp_pos = parseInt(temp_pos);
+		temp_pos = temp_pos + 1;
+		//alert(temp_pos);
+		pos_tiang1 = temp_pos + "px";
+		document.getElementById("tiangatas1").style.right = pos_tiang1;
+		document.getElementById("tiangbawah1").style.right = pos_tiang1;
+	}
+	
+	
+	if(temp_pos2 >= brickmax) {
+		//alert("work! " + temp_pos2);
+		reposition_up_down('B');
+		pos_tiang2 = "0px";
+		//alert("tiang 2 punya temp " + temp_pos2);
+	} else {
+		temp_pos2 = parseInt(temp_pos2);
+		temp_pos2 = temp_pos2 + 1;
+		//alert(temp_pos);
+		pos_tiang2 = temp_pos2 + "px";
+		document.getElementById("tiangatas2").style.right = pos_tiang2;
+		document.getElementById("tiangbawah2").style.right = pos_tiang2;
+	}
+	
+	
+	if(temp_pos3 >= brickmax) {
+		//alert("work!");
+		reposition_up_down('C');
+		pos_tiang3 = "0px";
+		//alert("tiang 3 punya temp " + temp_pos3);
+	} else {
+		temp_pos3 = parseInt(temp_pos3);
+		temp_pos3 = temp_pos3 + 1;
+		//alert(temp_pos);
+		pos_tiang3 = temp_pos3 + "px";
+		document.getElementById("tiangatas3").style.right = pos_tiang3;
+		document.getElementById("tiangbawah3").style.right = pos_tiang3;
+	}
+	
+	if(temp_pos4 >= brickmax) {
+		//alert("work!");
+		reposition_up_down('D');
+		pos_tiang4 = "0px";
+		//alert("tiang 3 punya temp " + temp_pos3);
+	} else {
+		temp_pos4 = parseInt(temp_pos4);
+		temp_pos4 = temp_pos4 + 1;
+		//alert(temp_pos);
+		pos_tiang4 = temp_pos4 + "px";
+		document.getElementById("tiangatas4").style.right = pos_tiang4;
+		document.getElementById("tiangbawah4").style.right = pos_tiang4;
+	}
+	
+	setTimeout(() => { movethebrick(); /*alert(para);*/ }, 1);
+} 
+
+function reposition(swtch)
+{
+	switch(swtch)
+	{
+		case 'A':
+			document.getElementById("tiangatas1").style.right = "0px";
+			document.getElementById("tiangbawah1").style.right = "0px";
+			pos_tiang1 = document.getElementById("tiangatas1").style.right;
+		break;
+		case 'B':
+			document.getElementById("tiangatas2").style.right = "0px";
+			document.getElementById("tiangbawah2").style.right = "0px";
+			pos_tiang2 = document.getElementById("tiangatas2").style.right;
+		break;
+		case 'C':
+			document.getElementById("tiangatas3").style.right = "0px";
+			document.getElementById("tiangbawah3").style.right = "0px";
+			pos_tiang3 = document.getElementById("tiangatas3").style.right;
+		break;
+		case 'D':
+			document.getElementById("tiangatas4").style.right = "0px";
+			document.getElementById("tiangbawah4").style.right = "0px";
+			pos_tiang4 = document.getElementById("tiangatas4").style.right;
+		break;
+	}
+}
+
+function reposition_up_down(swtch)
+{
+	switch(swtch)
+	{
+		case 'A':
+			//var random = /*Math.floor(Math.random() * Math.floor(300)); */ -170; //max 130; minimum -170
+			var random = randomNumberRange(-170, 130);
+			//alert(random);
+			var randomdown = (random+350) + "px";
+			var randomup = random + "px";
+			document.getElementById("tiangatas1").style.top = randomup;
+			document.getElementById("tiangbawah1").style.top = randomdown;
+			reposition('A');
+		break;
+		case 'B':
+			var random = randomNumberRange(-170, 130);
+			//alert(random);
+			var randomdown = (random+350) + "px";
+			var randomup = random + "px";
+			document.getElementById("tiangatas2").style.top = randomup;
+			document.getElementById("tiangbawah2").style.top = randomdown;
+			reposition('B');
+		break;
+		case 'C':
+			var random = randomNumberRange(-170, 130);
+			//alert(random);
+			var randomdown = (random+350) + "px";
+			var randomup = random + "px";
+			document.getElementById("tiangatas3").style.top = randomup;
+			document.getElementById("tiangbawah3").style.top = randomdown;
+			reposition('C');
+		break;
+		case 'D':
+			var random = randomNumberRange(-170, 130);
+			//alert(random);
+			var randomdown = (random+350) + "px";
+			var randomup = random + "px";
+			document.getElementById("tiangatas4").style.top = randomup;
+			document.getElementById("tiangbawah4").style.top = randomdown;
+			reposition('D');
+		break;
+	}
+}
+
+function randomNumberRange(min, max)
+{
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function movement()
+{
+	var val = document.mantap.input.value;
+	document.mantap.res.value = clear(val);
+	document.mantap.input.value = "";
+	move(val);
+}
+
+function lose()
+{
+	var scrinpx = (screen-400) + "px";
+	var temp_inNum = "";
+	for(i = 0; i < temp.length-2; i++)
+	{
+		temp_inNum = temp_inNum + temp.charAt(i);
+	}
+	temp_inNum = parseInt(temp_inNum);
+	if((temp >= scrinpx) && !(temp_inNum <= 300))
+	{
+		document.write("<link href='./lose.css' rel='stylesheet'/><div class='losing'>&nbsp;</div>");
+	} else {
+		setTimeout(() => { lose(); /*alert(para);*/ }, 1);
+	}
+}
+
+function falldown()
+{
+	var changer = "";
+		//temp = document.mantap.character.style.top;
+		//alert("YANG BARU " + temp);
+		for(j = 0; j < temp.length-2; j++)
+		{
+			changer = changer + temp.charAt(j);
+		}
+		changer = parseInt(changer);
+		changer = changer + 1;
+		changer = changer + "px";
+		//return changer;
+		temp = changer; //new temp value
+		//alert("NEW TEMP VALUE " + temp);
+		document.mantap.character.style.top = temp;
+		setTimeout(() => { falldown(); /*alert(para);*/ }, 1);
+}
+
+function speedupfalldown()
+{
+	var changer = "";
+		//temp = document.mantap.character.style.top;
+		//alert("YANG BARU " + temp);
+		for(j = 0; j < temp.length-1; j++)
+		{
+			changer = changer + temp.charAt(j);
+		}
+		changer = parseInt(changer);
+		changer = changer + 1;
+		changer = changer + "px";
+		//return changer;
+		temp = changer; //new temp value
+		//alert("NEW TEMP VALUE " + temp);
+		document.mantap.character.style.top = temp;
+		setTimeout(() => { speedupfalldown(); /*alert(para);*/ }, 70);
+}
+
+function smooth(para)
+{
+	//for(i = 0; i < para; i++)
+	//{
+	if(para <= 0) {
+	} else {
+		var changer = "";
+		//temp = document.mantap.character.style.top;
+		//alert("YANG BARU " + temp);
+		for(j = 0; j < temp.length-2; j++)
+		{
+			changer = changer + temp.charAt(j);
+		}
+		changer = parseInt(changer);
+		changer = changer - 1;
+		changer = changer + "px";
+		//return changer;
+		temp = changer; //new temp value
+		//alert("NEW TEMP VALUE " + temp);
+		document.mantap.character.style.top = temp;
+		setTimeout(() => { smooth(para-1); /*alert(para);*/ }, 0.05);
+		//document.mantap.character.style.top = temp;
+	//}
+	}
+}
+
+function move(signal)
+{
+	if(signal.charAt(0) == 'w')
+	{
+		//alert(document.mantap.character.style.top);
+		//hitbrick(); //checking purpose
+		smooth(100);
+	}
+	
+	//get location info
+	if(signal.charAt(0) == 'x')
+	{
+		detectLocation();
+	}
+}
+
+function clear(str)
+{
+	return str.charAt(0);
+}
+
+</script>
+</body>
+</html>
