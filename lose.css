@@ -1,0 +1,12 @@
+.losing {
+	position : absolute;
+	top : 0px;
+	left : 0px;
+	height : 100%;
+	width : 100%;
+	background-color : black;
+	background-image : url(https://media4.giphy.com/media/eJ4j2VnYOZU8qJU3Py/giphy.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
